@@ -1,0 +1,11 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+.container {
+	margin-top: 10%;
+	width: 40%;
+}
+.card-header{
+	text-align: center;
+}
