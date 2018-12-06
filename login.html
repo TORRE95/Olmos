@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>Login</title>
+
+  <link rel="stylesheet" type="text/css" href="libs/css/bootstrap.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="libs/js/datatable/dataTables.bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="libs/js/datatable/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" type="text/css" href="css/login.css">
+  <script src="libs/js/jquery.js"></script>
+  <script src="libs/js/bootstrap.js"></script>
+  <script src="libs/js/datatable/jquery.dataTables.min.js"></script>
+  <script src="libs/js/datatable/dataTables.bootstrap4.min.js"></script>
+  <script src="js/login.js"></script>
+
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src *; font-src *; connect-src *">
+  <meta charset="utf-8">
+
+</head>
+<body>
+<body class="bg-dark">
+
+    <div class="container">
+      <div class="card card-login mx-auto mt-5">
+        <div class="card-header">Iniciar Sesión</div>
+        <div class="card-body">
+          <form>
+            <div class="form-group">
+              <div class="form-label-group">
+                <label for="inputEmail">Usuario</label>
+                <input type="email" id="inputEmail" class="form-control" placeholder="Usuario" required="required" autofocus="autofocus">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="form-label-group">
+                <label for="inputPassword">Contraseña</label>
+                <input type="password" id="inputPassword" class="form-control" placeholder="Contraseña" required="required">
+              </div>
+            </div>
+            <a class="btn btn-primary btn-block" onclick="login()">Iniciar Sesión</a>
+          </form>
+        </div>
+      </div>
+    </div>
+
+</body>
+</html>

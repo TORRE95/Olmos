@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>Información</title>
+	 <link rel="stylesheet" type="text/css" href="libs/css/bootstrap.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="libs/js/datatable/dataTables.bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="libs/js/datatable/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" type="text/css" href="css/index.css">
+  <script src="libs/js/jquery.js"></script>
+  <script src="libs/js/bootstrap.js"></script>
+  <script src="libs/js/datatable/jquery.dataTables.min.js"></script>
+  <script src="libs/js/datatable/dataTables.bootstrap4.min.js"></script>
+  <script src="js/inicio.js"></script>
+  <meta charset="utf-8">
+
+</head>
+<body onload="getDeudores()">
+
+	<nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+		<a class="navbar-brand mr-1" href="index.html">CallUAQ Center</a>
+		<!-- buscar -->
+			<form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+        		<div class="input-group">
+          			<div class="input-group-append">
+            			<a class="navbar-brand" href="login.html">Salir</a>
+          			</div>
+        		</div>
+      		</form>
+	</nav>
+	<div class="con" >
+		<label class="la">Deudores</label>
+		<table class="table table-hover table-dark">
+  			<thead>
+   				<tr>
+      				<th scope="col">Nombre Completo</th>
+      				<th scope="col">No. Cliente</th>
+      				<th scope="col">Región</th>
+      				<th scope="col">Telefono de conctacto</th>
+      				<th scope="col">Fecha de acuerdo</th>
+      				<th scope="col">Fecha de vencimiento</th>
+      				<th scope="col"></th>
+    			</tr>
+  		</thead>
+  		<tbody id="deudores">
+   	 		
+  		</tbody>
+		</table>
+	</div>
+
+	<!-- modal -->
+	<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Captura de Información</h5>
+         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      	<div class="modal-body">
+          <div class="row">
+            <div class="col">
+              <label>Agente:</label>
+              <input id="agente_modal"  type="text" name="" disabled value="">
+            </div>
+            <div class="col">
+              <label>Fecha y hora de captura:</label>
+              <input id="hora_modal" type="text" name="" disabled value="">
+            </div>
+          </div>
+        	<div class="row">
+        		<div class="col">
+        			<label>Nombre del Cliente:</label>
+        			<input id="nombre_modal"  type="text" name="" disabled value="">
+        		</div>
+        		<div class="col">
+        			<label>No. Cliente:</label>
+        			<input id="cliente_modal" type="number" name="" disabled value="">
+        		</div>
+        	</div>
+        	<br>
+        	<div class="row">
+        		<div class="col">
+        			<label>Telefono Actual:</label>
+        			<input id="tel_actual_modal"type="text" name="" value="" disabled class="tel">
+            </div>
+            <div class="col">
+        			<label>Telefono Antiguo:</label>
+        			<input id="tel_antiguo_modal"type="text" name="" value="" disabled class="tel">
+        		</div>
+        	</div>
+          <br><br>
+        	<div class="row">
+        		<div class="col">
+        			<label>Deuda Actual:</label>
+        			<input id="saldo_modal"type="text" name="" value="" disabled>
+        		</div>
+        		<div class="col">
+        			<label>Ultimo Pago:</label>
+        			<input id="fecha_ult_pago_modal"type="text" name="" value="" disabled>
+        		</div>
+        		<div class="col">
+        			<label>Incremeto de Intéres:</label><br>
+        			<label>10%</label>
+        		</div>
+        	</div>
+        	<br>
+        	<div class="row">
+        		<div class="col">
+        			<label>Fecha de Pago:</label>
+        			<input id="fecha_pago_modal" type="date" onchange="localStorage.setItem('fecha_pago', this.value)">
+        		</div>
+        		<div class="col">
+        			<label>Sucursal:</label><br>
+        			<select id="sucursal_modal">
+        			</select>
+        		</div>
+        		<div class="col">
+        			<label>Nuevo Plan:</label>
+        			<select id="plan_modal">
+                <option value="">Una Exhibición</option>
+                <option value="">2 Meses</option>
+                <option value="">3 Meses</option>
+                <option value="">4 Meses</option>
+                <option value="">5 Meses</option>
+                <option value="">6 Meses</option>
+                <option value="">7 Meses</option>
+                <option value="">8 Meses</option>
+                <option value="">9 Meses</option>
+                <option value="">10 Meses</option>
+                <option value="">11 Meses</option>
+                <option value="">12 Meses</option>
+              </select>
+        		</div>
+        	</div>
+      	</div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="guardar()">Guardar</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- segundo modal -->
+	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Número Telefonico</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Nuevo número:</label>
+            <input type="text" class="form-control" id="tel_nuevo" >
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">Fecha:</label>
+            <input type="date" class="form-control" name="">
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">Descripción:</label>
+            <textarea class="form-control" id="message-text"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="guardarTel()">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+</body>
+</html>
