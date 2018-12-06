@@ -1,6 +1,6 @@
 function getDeudores(){
     document.getElementById('deudores').innerHTML = "";
-    var agente = document.getElementById('buscar').value;
+    var agente = document.getElementById('buscar3').value;
     XHR =  new XMLHttpRequest();
     XHR.open('GET', "https://arquolmos.000webhostapp.com/getReporte.php?agente="+agente);
     XHR.send();
